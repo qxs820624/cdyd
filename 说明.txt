@@ -1,0 +1,26 @@
+1、首先修改 overtime.xls 表格， 添加删除员工， 添加删除假日名称
+
+2、修改globalconfig.php中的内容，注意顺序和英文标点符号：
+	1）修改function isofficialholiday， 修改本年度的法定假日日期， 由case列出的日期是法定假日，考虑到书写习惯要兼容“2016-01-01”、“2016-1-1”这两种写法
+	
+	2）修改假期天数：具体为：$holidaysnum = 13;     //  [需要修改为overtime.xls中假期的天数]，在本例中假日一共为13天3（元旦）+7（春节）+3（清明）
+	
+	3）修改假期数目 $holidaynumber = 3;	   	// 假期数目 元旦、春节、清明共3个假期 
+
+	4）修改数据库IP、用户名、密码等	
+	修改以下值：
+	$table_seq = "20160501";				// 数据表序号， 每次修改后必须保证唯一，建议写日期，这样就不要删除数据库了。
+	//连接数据库
+	$db_domain = "127.0.0.1";		// 数据库的IP
+	$db_admin_name = "root";		//数据库管理员名称
+	$db_passwd = "";				//数据库密码
+	$db_name="overtime";			//数据库的名称
+	
+	5）如果有必要就修改初始化需要用到的excel文件：
+	$overtimefile="overtime20160501.xls"   // 初始化加班数据
+	$stafffile = "staff20160501.xls";      // 初始化员工信息数据，如果有员工添加删除
+
+
+3、如果需要保留以前的数据，这个步骤不做。执行resetOvertime.bat， 填入数据库相关参数，然后删除数据库overtime，并重新建立数据库。 
+4、访问链接 http://localhost/cdyd/staffinfo.php 即可初始化数据库
+5、管理员按照《管理员操作说明.docx》

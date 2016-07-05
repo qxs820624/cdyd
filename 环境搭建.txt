@@ -1,0 +1,24 @@
+1、web环境搭建
+ 1)如果是linux到http://lnmp.org/download.html下载lnmp1.3版本，使用tar xvf 解压，执行ubuntu.sh\centos.sh直到安装完成，然后执行sudo /root/lnmp start,把我发的zip包解压放到/home/wwwroot/default目录下，设置数据库的密码一定要记住的。
+ 2)如果是windows，从https://www.apachefriends.org/zh_cn/index.html下载xampp-win32-1.8.3-4-VC11-installer.exe，然后安装，一般默认安装在C:\xampp，找到这个目录，运行xampp-control.exe,然后启动apache和mysql服务，记得修改mysql的密码，root的密码默认为空.把我发的zip包解压放到C:\xampp\htdocs目录下
+ 
+ 2、修改php源文件
+ 用记事本获取其他软件以文本的形式打开 globalconfig.php文件，把其中的$dbpasswd变量的密码值修改为你数据库的密码
+ 把管理员密码$adminpasswd修改为你的密码，在extrainfo中只有管理员才能上传excel文件并重新更新数据库
+ 其他配置可以自行修改
+ 在staffinfo.php中只有管理员可以导出数据，上传文件，判断方法是根据员工编号，如果是admin或者36270000，这两个值是可以修改的在 globalconfig.php 的8行
+ 
+3、内外网访问地址
+http://ip:port/staffinfo.php 修改员工信息、修改加班信息
+ip就是你的电脑的地址，可以不给端口，port端口默认是80,
+ip:port可以是域名，例如：www.10086.cn
+
+4、测试地址：
+http://localhost/staffinfo.php
+
+5、确保目录可以读写，否则没法导出文件和上传文件到服务器，其父目录也要写的权限
+
+6、修改excel表格的时候需要修改globalconfig.php
+注意有[] 注释的地方就是修改的地方
+
+7、管理员可以替换源文件，登录员工信息表后，里面有替换配置的按钮，记得先选择需要替换的文件。
